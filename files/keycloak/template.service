@@ -1,0 +1,16 @@
+[Unit]
+Description=Keycloak Container
+After=network.target
+
+[Service]
+Type=exec
+WorkingDirectory=/path/to/keycloak/compose.yml/
+ExecStart=/usr/bin/podman-compose up
+ExecStop=/usr/bin/podman-compose down
+Restart=always
+TimeoutStartSec=30s
+TimeoutStopSec=60s
+
+[Install]
+WantedBy=default.target
+WantedBy=shutdown.target
