@@ -1,0 +1,5 @@
+FROM drupal:latest
+
+COPY default.settings.php /var/www/html/sites/default/default.settings.php
+COPY default.settings.php /var/www/html/sites/default/settings.php
+

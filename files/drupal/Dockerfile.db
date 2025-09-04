@@ -1,0 +1,4 @@
+FROM docker.io/library/mariadb:noble
+
+COPY ./init.sql /docker-entrypoint-initdb.d/
+

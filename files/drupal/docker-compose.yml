@@ -1,0 +1,34 @@
+services:
+  drupal:
+    build:
+      context: ./
+      dockerfile: Dockerfile.drupal
+    image: custom-drupal:latest
+    ports:
+      - '9090:80'
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      - DRUPAL_DB_HOST=db
+      - DRUPAL_DB_NAME=drupaldb
+      - DRUPAL_DB_USER=drupaluser
+      - DRUPAL_DB_PASSWORD=drupalpassword
+    volumes:
+      - ./data/files:/var/www/html/sites/default/files
+
+  db:
+    container_name: mariadb_drupal
+    build:
+      context: ./
+      dockerfile: Dockerfile.db
+    image: custom-mariadb:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=drupaldb
+      - MYSQL_USER=drupaluser
+      - MYSQL_PASSWORD=drupalpassword
+    volumes:
+      - ./db:/var/lib/mysql
+

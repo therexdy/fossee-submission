@@ -1,1 +1,6 @@
-I have deployed the Keycloak Service in a container and the files related to that are given in the `/files` directory of this repository.
+- I have deployed the Keycloak Service in a container and the files related to that are given in the `/files/keycloak` directory of this repository.
+- For privacy and security reasons I have not used the real directory paths and credentials in those files.
+- This is important for me because, I am doing all this on my personal VPS and I must ensure that I don't reveal sensitive information.
+- I used Podman instead of docker, since it is daemonless and this will be more isolated from other services running on my VPS.
+- So after running `podman-compose up` I was able to access the Keycloak web UI. Next I logged in with my admin credentials.
+- Then I have written a simple systemd script for these containers.
